@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from "./user/user.component";
+import { DUMMY_USERS } from './dummy-users';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,5 +11,5 @@ import { UserComponent } from "./user/user.component";
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = '02-essentials';
+  users = DUMMY_USERS
 }
