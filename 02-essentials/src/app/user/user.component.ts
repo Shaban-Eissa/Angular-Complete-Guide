@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -8,11 +14,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  @Input() user!: {
-    id: string;
-    name: string;
-    avatar: string;
-  };
+  @Input() user!: User;
   @Output() select = new EventEmitter();
 
   get ImagePath() {
