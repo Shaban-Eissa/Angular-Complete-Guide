@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, contentChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
@@ -12,11 +12,14 @@ import { ControlComponent } from '../../../shared/control/control.component';
 })
 export class NewTicketComponent {
   // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
-  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  // private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+  private control =
+    contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
   onSubmit(titleInput: string, textInput: string) {
     console.log('LOG MESSAGE');
     console.log(titleInput, textInput);
-
-    this.form()?.nativeElement.reset();
+    console.log(this.control());
+    // this.form()?.nativeElement.reset();
   }
 }
