@@ -1,4 +1,11 @@
-import { Directive, effect, inject, input } from '@angular/core';
+import {
+  Directive,
+  effect,
+  inject,
+  input,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { Permission } from './auth.model';
 import { AuthService } from './auth.service';
 
@@ -12,12 +19,15 @@ export class AuthDirective {
   });
 
   private authService = inject(AuthService);
+
+  private TemplateRef = inject(TemplateRef);
+  private ViewContainerRef = inject(ViewContainerRef);
   constructor() {
     effect(() => {
       if (this.authService.activePermission() === this.userType()) {
-        console.log('SHOW ELEMENT FOR ADMINS');
+        this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
       } else {
-        console.log("DON'T SHOW ANY ITEMS");
+        this.ViewContainerRef.clear();
       }
     });
   }
