@@ -10,6 +10,9 @@ export class TempPipe implements PipeTransform {
     inputType: 'cel' | 'fah',
     outputType?: 'cel' | 'fah'
   ) {
+    if (!value) {
+      return value;
+    }
     let val: number;
     if (typeof value === 'string') {
       val = parseFloat(value);
@@ -34,6 +37,6 @@ export class TempPipe implements PipeTransform {
       symbol = outputType === 'cel' ? '°C' : '°F';
     }
 
-    return `${outputTemp} ${symbol}`;
+    return `${outputTemp.toFixed(2)} ${symbol}`;
   }
 }
