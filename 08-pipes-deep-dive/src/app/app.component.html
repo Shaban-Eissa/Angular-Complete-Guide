@@ -4,7 +4,7 @@
       <img src="temp-icon.png" alt="Thermometer icon" />
       <div>
         <h2>Current Temperatures</h2>
-        <p>{{ currentDate | date : "meduim" }}</p>
+        <p>{{ currentDate | date }}</p>
       </div>
     </header>
     <p>New York: {{ currentTemperaturs.newYork | number : "1.1-2" }}</p>
@@ -23,7 +23,7 @@
     </header>
     <ul>
       @for (temperature of historicTemperatures; track temperature) {
-      <li (click)="onReset($index)">{{ temperature }}</li>
+      <li (click)="onReset($index)">{{ temperature | temp }}</li>
       }
     </ul>
   </article>
