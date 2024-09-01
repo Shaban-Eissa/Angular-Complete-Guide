@@ -5,7 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class TempPipe implements PipeTransform {
-  transform(value: any, ...args: any[]) {
-    return value + ' - transformed ';
+  transform(value: string | number) {
+    let val: number;
+    if (typeof value === 'string') {
+      val = parseFloat(value);
+    } else {
+      val = value;
+    }
+
+    let transformedTemp = val * (9 / 5) + 32;
+    return `${transformedTemp}`;
   }
 }
