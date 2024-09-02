@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 
+import { RouterLink } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { UsersService } from './users.service';
 
@@ -8,7 +9,7 @@ import { UsersService } from './users.service';
   standalone: true,
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
-  imports: [UserComponent],
+  imports: [UserComponent, RouterLink],
 })
 export class UsersComponent {
   private usersService = inject(UsersService);
