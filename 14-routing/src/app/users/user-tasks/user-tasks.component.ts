@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, input } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 
 import { UsersService } from '../users.service';
@@ -13,6 +13,7 @@ import { UsersService } from '../users.service';
 export class UserTasksComponent implements OnInit {
   // userId = input.required<string>();
   userName = '';
+  message = input.required<string>();
   private usersService = inject(UsersService);
   private activatedRoute = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
@@ -23,6 +24,7 @@ export class UserTasksComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.activatedRoute);
+    console.log(this.message());
     const subscription = this.activatedRoute.paramMap.subscribe({
       next: (paramMap) => {
         this.userName =
