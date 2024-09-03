@@ -1,5 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import {
+  ActivatedRoute,
   ActivatedRouteSnapshot,
   ResolveFn,
   RouterLink,
@@ -19,6 +20,16 @@ import { UsersService } from '../users.service';
 export class UserTasksComponent {
   userName = input.required<string>();
   message = input.required<string>();
+
+  private activatedRoute = inject(ActivatedRoute);
+
+  ngOnInit() {
+    this.activatedRoute.data.subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+    });
+  }
 }
 
 export const resolveUserName: ResolveFn<string> = (
