@@ -38,9 +38,7 @@ export const routes: Routes = [
   {
     path: 'tasks', // <your-domain>/users/<uid>/tasks
     loadComponent: () =>
-      import('../tasks/tasks.component').then(
-        (module) => module.TasksComponent
-      ),
+      import('../tasks/tasks.component').then((mod) => mod.TasksComponent),
     runGuardsAndResolvers: 'always',
     resolve: {
       userTasks: resolveUserTasks,
